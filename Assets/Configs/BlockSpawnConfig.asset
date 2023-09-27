@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb41769e4e7a2d409b93da017cc2b4d, type: 3}
+  m_Name: BlockSpawnConfig
+  m_EditorClassIdentifier: 
+  OffsetZ: 200
+  CrossroadNumberInCity: 0
+  BlockStorage: {fileID: -4973332637753836099, guid: dc45dd8a5c1c3b74a97fd61d7f339f74, type: 3}
+  Block: {fileID: -6115050909301146613, guid: ea7579af3201003468bf01fac551bad7, type: 3}
+  TileSpawner: {fileID: -8534916590494279408, guid: 1f35c44e461129b46a7ee1075b3aec95, type: 3}
+  Tile: {fileID: 3251545970536110769, guid: 71ef543c0f0855d47810bef7bf4c5181, type: 3}
+  SpawnPointFirstBlock: {x: 0, y: 0, z: 0}
+  TilesCountInFirstBlock: 15
+  MinTilesCount: 8
+  MaxTilesCount: 12
+  CityTiles:
+  - {fileID: 3543692409055551638, guid: 1db4df91f5140504896e2b9ffd1c17a1, type: 3}
+  - {fileID: 4742352018725668564, guid: 449463f19403dbc4faf93879a614d290, type: 3}
+  - {fileID: 4805882520437461842, guid: 2e31b45579bdfc44d875703cc33b3351, type: 3}
+  - {fileID: 2179686252110637026, guid: 3922b4d99a236dd498f16ee4fc02570f, type: 3}
+  DesertTiles:
+  - {fileID: -3228108307972865063, guid: b598bf98c37c5b94ba226908574e08db, type: 3}
+  - {fileID: -3228108307972865063, guid: 21a1bf8eb479f5d48800ac7134eb7111, type: 3}
+  - {fileID: -3228108307972865063, guid: 518bf56273c046d45ba6b7cd147c83ea, type: 3}
+  - {fileID: -3228108307972865063, guid: c4e1277829b455544bc4484b11074dff, type: 3}
+  - {fileID: -3228108307972865063, guid: a8d7ad0b26f43274195ac498d4090a19, type: 3}
+  ForestTiles:
+  - {fileID: 8764331584623168254, guid: b757a6bfc04699c438338b61cb506fc9, type: 3}
+  HighwayTiles:
+  - {fileID: 8422861257845989036, guid: 1690547593c15c74cac8088f1b2332df, type: 3}
+  CityDesertTile: {fileID: -924436573097689384, guid: 990889a4d9aa1db43a51f3dfe83798d6, type: 3}
+  CityForestTile: {fileID: 5190991488812217892, guid: 85e05c789c8987a4cb98168f16a0de74, type: 3}
+  CityHighwayTile: {fileID: -4725375999315294007, guid: 89ab255c83948c5479fa57f103cdfc0b, type: 3}
+  DesertCityTile: {fileID: 5146159383086067896, guid: 713c3e3f6a174544484269f94cd6d85e, type: 3}
+  DesertForestTile: {fileID: 7769899521794673531, guid: 66c4d560b8870d244821081451768e7c, type: 3}
+  DesertHighwayTile: {fileID: -5273493189451479654, guid: 11057e5e871373f40b11499938e26267, type: 3}
+  ForestCityTile: {fileID: 502544242769640359, guid: 34c412aa5ee74ac4781782a8dee9067c, type: 3}
+  ForestDesertTile: {fileID: -4362574417198823884, guid: ea20f4c5e0f277743a8eac9fa9d4bde5, type: 3}
+  ForestHighwayTile: {fileID: 955444914285877213, guid: b33da0fb29638cb4c97876f32c2adf93, type: 3}
+  HighwayCityTile: {fileID: 6002809352907662865, guid: 150fc89c0802828479a76bf6a2597a07, type: 3}
+  HighwayDesertTile: {fileID: 8725213712331979041, guid: bdbc396af61da454d86f7a0ea1f4bc22, type: 3}
+  HighwayForestTile: {fileID: 8160997477353995181, guid: da3b631d31a5db74e9b236ff42e4d244, type: 3}
