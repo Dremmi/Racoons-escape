@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 2515979562634652367}
   - component: {fileID: -5798735501148351953}
   - component: {fileID: 8828468189100446715}
+  - component: {fileID: 4414974352922141197}
+  - component: {fileID: -7099515417923366852}
   m_Layer: 0
   m_Name: NPC_Minivan
   m_TagString: Untagged
@@ -160,6 +162,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9573601, y: 1.8009164, z: 4.942317}
   m_Center: {x: 0.0056219697, y: 0.99487185, z: -1.5900445}
+--- !u!114 &4414974352922141197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515979562634652366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66165272105abe847bb7176273095e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7099515417923366852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515979562634652366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0610a65bcd147df4ab6debe767c2b904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6735404058940363871
 GameObject:
   m_ObjectHideFlags: 0

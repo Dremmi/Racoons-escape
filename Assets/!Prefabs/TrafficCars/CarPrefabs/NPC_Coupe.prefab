@@ -75,6 +75,8 @@ GameObject:
   - component: {fileID: 4535947286304226317}
   - component: {fileID: 3005568391606203277}
   - component: {fileID: 6184303328607887305}
+  - component: {fileID: 1371446424189128477}
+  - component: {fileID: -323498468250577620}
   m_Layer: 0
   m_Name: NPC_Coupe
   m_TagString: Untagged
@@ -128,6 +130,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9573601, y: 1.3618776, z: 4.7963123}
   m_Center: {x: 0.0056219697, y: 0.6408022, z: -1.5170422}
+--- !u!114 &1371446424189128477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808734249921759890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66165272105abe847bb7176273095e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-323498468250577620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808734249921759890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0610a65bcd147df4ab6debe767c2b904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5076545913342346983
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ public class BlockStorageCreation : MonoBehaviour
 {
     private BlockSpawnConfig _blockSpawnConfig;
     private BuildingSpawnConfig _buildingSpawnConfig;
-    private TrafficSpawnConfig _trafficSpawnConfig;
+    private TrafficConfig _trafficSpawnConfig;
     private BlockSpawner _blockStorage;
 
     private void Awake()
