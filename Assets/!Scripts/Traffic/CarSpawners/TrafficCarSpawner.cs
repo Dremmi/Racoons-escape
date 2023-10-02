@@ -7,62 +7,38 @@ using Random = UnityEngine.Random;
 
 public class TrafficCarSpawner : MonoBehaviour
 {
-    private const int MIN_SPAWN_CARS = 1;
-    private const int MAX_SPAWN_CARS = 16;
-    [SerializeField] private Transform[] startWaypoints, endWaypoints;
-    [SerializeField] private int amountSpawns;
+    [SerializeField] private  int minSpawnCars = 4;
+    [SerializeField] private  int maxSpawnCars = 16;
+    [SerializeField] private Waypoints[] waypoints;
+    [SerializeField] private int roadSpawns;
     private TrafficCarFactory _trafficCarFactory;
     private List<Vector3> _spawnPositions;
 
     public void Launch(TrafficConfig trafficConfig, eBlockType blockType)
     {
-        _trafficCarFactory = GetFactory(blockType, trafficConfig);
-        
-        if (_trafficCarFactory == null)
-            return;
-
+        _trafficCarFactory = new TrafficCarFactory(trafficConfig, blockType);
         _spawnPositions = GetSpawnPoints();
         
-        for (int i = 1; i <= Random.Range(MIN_SPAWN_CARS, MAX_SPAWN_CARS); i++)
+        for (int i = 1; i <= Random.Range(minSpawnCars, maxSpawnCars); i++)
         {
             Spawn();
         }
     }
     
-    private TrafficCarFactory GetFactory(eBlockType blockType, TrafficConfig trafficConfig)
-    {
-        switch (blockType)
-        {
-            case eBlockType.City:
-                return new CityCarFactory(trafficConfig.CityTraffic);
-            case eBlockType.Desert:
-                return new DesertCarFactory(trafficConfig.DesertTraffic);
-            case eBlockType.Forest:
-                return new ForestCarFactory(trafficConfig.ForestTraffic);
-            case eBlockType.Highway:
-                return new HighwayCarFactory(trafficConfig.HighwayTraffic);
-            default:
-                throw new ArgumentOutOfRangeException(nameof(blockType), blockType, null);
-        }
-    }
 
     private List<Vector3> GetSpawnPoints()
     {
         List<Vector3> spawnPoints = new List<Vector3>();
         List<TrafficLane> trafficLanes = new List<TrafficLane>();
 
-        for (int i = 0; i < startWaypoints.Length; i++)
+        for (int i = 0; i < waypoints.Length; i++)
         {
-            if (endWaypoints == null)
-                break;
-
-            trafficLanes.Add(new TrafficLane(startWaypoints[i].position,
-                endWaypoints[i].position));
+            trafficLanes.Add(new TrafficLane(waypoints[i]));
         }
 
         foreach (var lane in trafficLanes)
         {
-            foreach (var point in lane.GetPoints(amountSpawns))
+            foreach (var point in lane.GetPoints(roadSpawns))
             {
                 spawnPoints.Add(point);
             }
@@ -83,22 +59,21 @@ public class TrafficCarSpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (waypoints == null)
+            return;
+        
         List<TrafficLane> lanes = new List<TrafficLane>();
         Gizmos.color = Color.red;
-        for (int i = 0; i < startWaypoints.Length; i++)
+        for (int i = 0; i < waypoints.Length; i++)
         {
-            if (startWaypoints == null || endWaypoints == null)
-                continue;
-
-            Gizmos.DrawLine(startWaypoints[i].position, endWaypoints[i].position);
-            lanes.Add(new TrafficLane(startWaypoints[i].position,
-                endWaypoints[i].position));
+            Gizmos.DrawLine(waypoints[i].point1.position, waypoints[i].point2.position);
+            lanes.Add(new TrafficLane(waypoints[i]));
         }
 
         Gizmos.color = Color.white;
         foreach (var lane in lanes)
         {
-            foreach (var point in lane.GetPoints(amountSpawns))
+            foreach (var point in lane.GetPoints(roadSpawns))
             {
                 Gizmos.DrawSphere(point, 0.5f);
             }

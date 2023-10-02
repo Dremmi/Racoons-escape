@@ -6,61 +6,36 @@ namespace Traffic
 {
     public class TrafficCarMovement : MonoBehaviour
     {
-        private TrafficCarState State;
-        private float _speed;
+        private int _speed;
         private float _slowSpeed;
-        private float _rayDistance = 2.0f;
         private Rigidbody _rigidbody;
-        private Vector3 _direction;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
-
-        private void Start()
+        public void Launch(int speed)
         {
-            _speed = Random.Range(5.0f, 5.5f);
-            State = TrafficCarState.Driving;
-            _direction = transform.forward;
+            _speed = speed;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            RealseRays();
-            
-            switch (State)
-            {
-                case TrafficCarState.Driving:
-                    Drive();
-                    return;
-                case TrafficCarState.SlowDown:
-                    Stop();
-                    return;
-                case TrafficCarState.Stopped:
-                    Stop();
-                    return;
-            }
+            Drive();
         }
 
-        private void RealseRays()
+        public void Drive()
         {
-            RaycastHit hit;
-            
+            _rigidbody.MovePosition(transform.position + transform.forward * _speed * Time.deltaTime * 0.01f);
         }
         
-        private void Drive()
-        {
-            _rigidbody.MovePosition(transform.position + transform.forward * _speed * Time.deltaTime);
-        }
-        
-        private void SlowDown()
+        public void SlowDown()
         {
             _rigidbody.MovePosition(transform.position + 
                                     transform.forward *
                                     Mathf.MoveTowards(_speed, _slowSpeed, Time.deltaTime));
         }
-        private void Stop()
+        public void Stop()
         {
             _rigidbody.MovePosition(transform.position +
                                     transform.forward *

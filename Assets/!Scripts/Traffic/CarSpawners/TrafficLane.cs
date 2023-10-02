@@ -1,31 +1,48 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-
+namespace Traffic
+{
     public class TrafficLane
     {
-        private Vector3 _startWaypoint;
-        private Vector3 _endWaypoint;
+        private Waypoints _waypoints;
 
-        public TrafficLane(Vector3 startWaypoint, Vector3 endWaypoint)
+        public TrafficLane(Waypoints waypoints)
         {
-
-            _startWaypoint = startWaypoint;
-            _endWaypoint = endWaypoint;
+            _waypoints = waypoints;
         }
 
         public IEnumerable<Vector3> GetPoints(int step)
         {
-            float length = (_startWaypoint - _endWaypoint).magnitude;
+            float length = _waypoints.GetLength();
             var result = new List<Vector3>();
             for (int i = 0; i < step; i++)
             {
-                result.Add(new Vector3(_startWaypoint.x,
+                result.Add(new Vector3(_waypoints.GetFirstPoint().x,
                     0,
-                    _startWaypoint.z + (length / (step - 1)) * i));
+                    _waypoints.GetFirstPoint().z + (length / (step - 1)) * i));
             }
 
             return result;
         }
     }
+
+    [Serializable]
+    public struct Waypoints
+    {
+        public Transform point1;
+        public Transform point2;
+
+        public float GetLength()
+        {
+            return (point1.position - point2.position).magnitude;
+        }
+
+        public Vector3 GetFirstPoint()
+        {
+            return point1.position.z < point2.position.z ? point1.position : point2.position;
+        }
+    }
+}
 

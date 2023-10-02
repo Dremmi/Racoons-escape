@@ -2,22 +2,20 @@
 
 namespace Traffic
 {
+    [RequireComponent(typeof(TrafficCarMovement))]
+    [RequireComponent(typeof(TrafficCarAI))]
     public class TrafficCar : MonoBehaviour
     {
         private LayerMask _layerMask;
         private TrafficCarMovement _carMovement;
+        private TrafficCarAI _trafficCarAI;
 
-        public void Launch()
-        {
-            
-        }
-        private void Start()
+        public void Launch(int speed)
         {
             _carMovement = GetComponent<TrafficCarMovement>();
-            
-            _layerMask = LayerMask.GetMask(new[] { "Player" });
+            _carMovement.Launch(speed);
         }
 
-       
+
     }
 }

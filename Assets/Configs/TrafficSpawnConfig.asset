@@ -12,11 +12,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a99baa13925c849b67f008592f15df, type: 3}
   m_Name: TrafficSpawnConfig
   m_EditorClassIdentifier: 
-  TrafficCarsSpawner: {fileID: -1015186689500763139, guid: bc93a1769cdac3846bc0528a712c5914, type: 3}
-  TrafficCars:
-  - {fileID: 2515979562634652366, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
-  - {fileID: 2515979562634652366, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
-  - {fileID: 4808734249921759890, guid: 912399416774c774ebbd1927199c6192, type: 3}
-  - {fileID: 2515979562634652366, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
-  - {fileID: 2515979562634652366, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
-  TrafficCarsSpeed: 10
+  CityTraffic:
+  - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}
+    _speed:
+      _min: 60
+      _max: 65
+  - _prefab: {fileID: 4414974352922141197, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
+    _speed:
+      _min: 60
+      _max: 65
+  - _prefab: {fileID: -1409864895713919962, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
+    _speed:
+      _min: 60
+      _max: 65
+  - _prefab: {fileID: -5806574031475107900, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
+    _speed:
+      _min: 60
+      _max: 65
+  - _prefab: {fileID: 9175625029295766123, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
+    _speed:
+      _min: 60
+      _max: 65
+  DesertTraffic:
+  - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: 4414974352922141197, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: -1409864895713919962, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: -5806574031475107900, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: 9175625029295766123, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  ForestTraffic:
+  - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+  - _prefab: {fileID: 4414974352922141197, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+  - _prefab: {fileID: -1409864895713919962, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+  - _prefab: {fileID: -5806574031475107900, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+  - _prefab: {fileID: 9175625029295766123, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+  HighwayTraffic:
+  - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: 4414974352922141197, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: -1409864895713919962, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: -5806574031475107900, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
+    _speed:
+      _min: 90
+      _max: 100
+  - _prefab: {fileID: 9175625029295766123, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
+    _speed:
+      _min: 90
+      _max: 100

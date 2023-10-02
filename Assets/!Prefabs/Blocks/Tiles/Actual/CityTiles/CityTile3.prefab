@@ -549,17 +549,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d9be71d2934de3a5f04e62668a80e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWaypoints:
-  - {fileID: 1522383780368916898}
-  - {fileID: 2995451036907730937}
-  - {fileID: 7490964204139329913}
-  - {fileID: 1804360808884907313}
-  endWaypoints:
-  - {fileID: 3034783423777703010}
-  - {fileID: 2630854110107573177}
-  - {fileID: 334121753293635976}
-  - {fileID: 8107613009285142666}
-  amountSpawns: 12
+  minSpawnCars: 1
+  maxSpawnCars: 16
+  waypoints:
+  - point1: {fileID: 1522383780368916898}
+    point2: {fileID: 3034783423777703010}
+  - point1: {fileID: 2995451036907730937}
+    point2: {fileID: 2630854110107573177}
+  - point1: {fileID: 7490964204139329913}
+    point2: {fileID: 334121753293635976}
+  - point1: {fileID: 1804360808884907313}
+    point2: {fileID: 8107613009285142666}
+  roadSpawns: 12
 --- !u!1 &9176508235036397465
 GameObject:
   m_ObjectHideFlags: 0
