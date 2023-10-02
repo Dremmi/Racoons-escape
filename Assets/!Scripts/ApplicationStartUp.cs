@@ -12,7 +12,7 @@ public class ApplicationStartUp : MonoBehaviour
     public BlockSpawnConfig BlockSpawnConfig;
     public BuildingSpawnConfig BuildingSpawnConfig;
     public ShopCarModelsConfig ShopCarModelsConfig;
-    public TrafficSpawnConfig TrafficSpawnConfig;
+    public TrafficConfig TrafficSpawnConfig;
     public ColorsConfig ColorsConfig;
     
     private void Awake()
