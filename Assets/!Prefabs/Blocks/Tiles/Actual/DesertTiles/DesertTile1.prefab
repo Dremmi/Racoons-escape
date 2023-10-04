@@ -210,9 +210,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2014785427267425446, guid: ffb22b525eb30754c95a1c3ae91ba78f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 93.67
+      objectReference: {fileID: 0}
     - target: {fileID: 5399606609866262010, guid: ffb22b525eb30754c95a1c3ae91ba78f, type: 3}
       propertyPath: m_Name
       value: EndWaypoints
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869692410111802250, guid: ffb22b525eb30754c95a1c3ae91ba78f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 93.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffb22b525eb30754c95a1c3ae91ba78f, type: 3}
@@ -2823,6 +2831,14 @@ PrefabInstance:
     - target: {fileID: 2123611285369754946, guid: 1710c402ca397014091fe5be93e4731c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186835133465650067, guid: 1710c402ca397014091fe5be93e4731c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -91.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211401495740169291, guid: 1710c402ca397014091fe5be93e4731c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -91.3
       objectReference: {fileID: 0}
     - target: {fileID: 5537167100527643000, guid: 1710c402ca397014091fe5be93e4731c, type: 3}
       propertyPath: m_Name

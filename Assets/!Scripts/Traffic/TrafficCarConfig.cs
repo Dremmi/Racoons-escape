@@ -18,10 +18,17 @@ namespace Traffic
     {
         [SerializeField] private int _min;
         [SerializeField] private int _max;
+        [SerializeField] private int _fixed;
 
+        public int Fixed()
+        {
+            return _fixed;
+        }
+        
         public int Random()
         {
             return UnityEngine.Random.Range(_min, _max);
         }
+        
     }
 }
