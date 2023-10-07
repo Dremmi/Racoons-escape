@@ -13,10 +13,30 @@ MonoBehaviour:
   m_Name: TrafficSpawnConfig
   m_EditorClassIdentifier: 
   CityTraffic:
+  - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+      _fixed: 100
+  - _prefab: {fileID: 4414974352922141197, guid: 52b0d76c0565c4b42b640e112cb9ebde, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+      _fixed: 100
+  - _prefab: {fileID: -1409864895713919962, guid: 7e75f3f9deb78ca4bb5b7e3854e7d09d, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+      _fixed: 100
+  - _prefab: {fileID: -5806574031475107900, guid: 620716f1383e82a4f949fcb489c69265, type: 3}
+    _speed:
+      _min: 50
+      _max: 60
+      _fixed: 100
   - _prefab: {fileID: 9175625029295766123, guid: 6cdc429392b9e7c448348527ee7876d2, type: 3}
     _speed:
-      _min: 60
-      _max: 65
+      _min: 50
+      _max: 60
       _fixed: 100
   DesertTraffic:
   - _prefab: {fileID: 1371446424189128477, guid: 912399416774c774ebbd1927199c6192, type: 3}

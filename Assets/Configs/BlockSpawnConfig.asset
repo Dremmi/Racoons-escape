@@ -24,7 +24,7 @@ MonoBehaviour:
   MaxTilesCount: 12
   CityTiles:
   - {fileID: 3543692409055551638, guid: 1db4df91f5140504896e2b9ffd1c17a1, type: 3}
-  - {fileID: 4742352018725668564, guid: 449463f19403dbc4faf93879a614d290, type: 3}
+  - {fileID: 4742352018725668564, guid: f91b10de6f9dace478bf3c7cc9080082, type: 3}
   - {fileID: 4805882520437461842, guid: 2e31b45579bdfc44d875703cc33b3351, type: 3}
   - {fileID: 2179686252110637026, guid: 3922b4d99a236dd498f16ee4fc02570f, type: 3}
   DesertTiles:
