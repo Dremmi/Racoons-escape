@@ -10,7 +10,7 @@ public readonly struct OnAmbientThemeSwitchMessage
         BlockType = blockType;
     }
 }
-public class AudioController : MonoBehaviour
+public class AmbientPlayer : MonoBehaviour
 {
     [SerializeField] private AudioClip ambientCity;
     [SerializeField] private AudioClip ambientForest;

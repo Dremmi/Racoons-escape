@@ -3352,6 +3352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2182128061691129947, guid: 5220111b55a8a6b479ffdc441b8a04cf, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: 9210258067043930017, guid: 5220111b55a8a6b479ffdc441b8a04cf, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -5318,6 +5322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6120187763902378556, guid: 311ce3e904d1ced4bbe139e7cb0757eb, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 311ce3e904d1ced4bbe139e7cb0757eb, type: 3}
 --- !u!4 &8542557421788815506 stripped
@@ -6575,6 +6583,10 @@ PrefabInstance:
     - target: {fileID: 2182128061691129947, guid: 5220111b55a8a6b479ffdc441b8a04cf, type: 3}
       propertyPath: m_Name
       value: Tree2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182128061691129947, guid: 5220111b55a8a6b479ffdc441b8a04cf, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 9210258067043930017, guid: 5220111b55a8a6b479ffdc441b8a04cf, type: 3}
       propertyPath: m_RootOrder
@@ -8479,6 +8491,10 @@ PrefabInstance:
     - target: {fileID: 6120187763902378556, guid: 311ce3e904d1ced4bbe139e7cb0757eb, type: 3}
       propertyPath: m_Name
       value: Tree1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120187763902378556, guid: 311ce3e904d1ced4bbe139e7cb0757eb, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 311ce3e904d1ced4bbe139e7cb0757eb, type: 3}
