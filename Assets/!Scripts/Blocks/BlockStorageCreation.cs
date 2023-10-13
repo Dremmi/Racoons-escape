@@ -7,6 +7,8 @@ public class BlockStorageCreation : MonoBehaviour
     private TrafficConfig _trafficSpawnConfig;
     private BlockSpawner _blockStorage;
 
+    public BlockSpawner BlockStorage => _blockStorage;
+
     private void Awake()
     {
         _blockSpawnConfig = GetComponent<ApplicationStartUp>().BlockSpawnConfig;

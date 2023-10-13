@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "EnvironmentConfig", menuName = "Configs/EnvironmentConfig", order = 51)]
 public class EnvironmentConfig : ScriptableObject
@@ -10,5 +11,6 @@ public class EnvironmentConfig : ScriptableObject
 
     public Shop Shop;
 
-    public AudioController AudioController;
+    [FormerlySerializedAs("AmbientPlayer")] public AmbientPlayer ambientPlayer;
+    
 }

@@ -89,4 +89,15 @@ public class BlockSpawner : MonoBehaviour
             Destroy(removableBlock.gameObject);
         }
     }
+
+    public void ReloadBlocks()
+    {
+        foreach (var block in _blocks)
+        {
+            Destroy(block.gameObject);
+        }
+        _blocks.Clear();
+        
+        Launch(_blockSpawnConfig, _buildingSpawnConfig, _trafficConfig);
+    }
 }

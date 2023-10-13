@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TileSpawner : MonoBehaviour
@@ -182,5 +183,9 @@ public class TileSpawner : MonoBehaviour
     public BoxCollider GetTransitionTileCollider()
     {
         return _transitionTile.GetComponent<BoxCollider>();
+    }
+
+    public void DestroyTiles()
+    {
     }
 }
