@@ -195,12 +195,14 @@ public class PlayerActiveCar : MonoBehaviour
 		frontLeftW.steerAngle = _steeringAngle;
 		frontRightW.steerAngle = _steeringAngle;
 		
-		RotateCar(_carTransform.rotation);
+		LimitRotate();
 	}
 
-	private void RotateCar(Quaternion rotation)
+	private void LimitRotate()
 	{
+		var rotation = _carTransform.rotation;
 		rotation.y = Mathf.Clamp(rotation.y, -Mathf.Cos(_limitRotationAngleY), Mathf.Cos(_limitRotationAngleY));
+		_carTransform.rotation = rotation;
 	}
 	
 	private void AccelerateAuto()
