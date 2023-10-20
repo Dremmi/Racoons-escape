@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UniRx;
+using Unity.VisualScripting;
 
 public class PlayerActiveCar : MonoBehaviour
 {
@@ -25,8 +27,7 @@ public class PlayerActiveCar : MonoBehaviour
 	private bool _isRearWheelDriveOn;
 
 	private float _maxSteerAngle;	
-
-	private float _horizontalInput;
+	
 	private float _steeringAngle;
 	private float _limitRotationAngleY;	
 
@@ -113,22 +114,23 @@ public class PlayerActiveCar : MonoBehaviour
     {
 		_carRigidbody.freezeRotation = value;
     }
+
 	
 	private void FixedUpdate()
 	{
+		RotateCar();
 		CheckConditions();
 
 		if (!_isActive)
 		{
 			return;
 		}
-
-		Steer();	
+		Steer();
 		AccelerateAuto();
 		UseBrakes(_canUseBrakes);
 		UseNitro();
 
-		UpdateWheelPoses();		
+			
 
 		_speed = Mathf.Abs(_carRigidbody.velocity.magnitude * 3.6f);
 		_currentRideDistance = Vector3.Distance(_startPosition, _carTransform.position);
@@ -157,23 +159,9 @@ public class PlayerActiveCar : MonoBehaviour
 			_carRigidbody.velocity = Vector3.zero;
 		}
 
-		if (_speed >= _speedLimit)
-		{
-			_isAccelerating = false;
-		}
-		else
-		{
-			_isAccelerating = true;
-		}
+		_isAccelerating = !(_speed >= _speedLimit);
 
-		if (_speed >= _breakSpeedLimit)
-		{
-			_canUseBrakes = true;
-		}
-		else
-		{
-			_canUseBrakes = false;
-		}
+		_canUseBrakes = _speed >= _breakSpeedLimit;
 
 		if (!_isLossConditionActivated)
         {
@@ -198,56 +186,38 @@ public class PlayerActiveCar : MonoBehaviour
 
 	private void Steer()
 	{
-		_horizontalInput = Input.GetAxis("Horizontal");
-
-		if (_horizontalInput == 0)
-        {
-			_steeringAngle = -transform.eulerAngles.y;
-        }
-		else
-        {
-			_steeringAngle = _maxSteerAngle * _horizontalInput;
-		}		
+		var horizontalInput = Input.GetAxis("Horizontal");
+		var defaultAngle = -_carTransform.eulerAngles.y;
+		
+		_steeringAngle = horizontalInput != 0 ? _maxSteerAngle * horizontalInput : defaultAngle;
 		
 		frontLeftW.steerAngle = _steeringAngle;
 		frontRightW.steerAngle = _steeringAngle;
+	}
 
-		if (_carTransform.eulerAngles.y > _limitRotationAngleY &&
-			_carTransform.eulerAngles.y < HalfCircle)
+	private void RotateCar()
+	{
+		
+		var eulerAngles = _carTransform.eulerAngles;
+		Debug.Log(Mathf.Acos(Mathf.Cos(eulerAngles.y)));
+		eulerAngles.y = Mathf.Acos(Mathf.Clamp(Mathf.Cos(eulerAngles.y), -Mathf.Cos(_limitRotationAngleY), Mathf.Cos(_limitRotationAngleY)));
+		/*var leftLimitRotate =
+			Mathf.Ceil(eulerAngles.y) >= _limitRotationAngleY && Mathf.Ceil(eulerAngles.y) <= HalfCircle;
+		
+		var rightLimitRotate = Mathf.Ceil(eulerAngles.y) >= HalfCircle &&
+		                        Mathf.Ceil(eulerAngles.y) <= FullCircle - _limitRotationAngleY;
+		
+		if (leftLimitRotate)
 		{
-			_carTransform.eulerAngles = new Vector3(
-				_carTransform.eulerAngles.x,
-				_limitRotationAngleY,
-				_carTransform.eulerAngles.z);
-
-			_carRigidbody.angularVelocity = new Vector3(
-				_carRigidbody.angularVelocity.x,
-				_carRigidbody.angularVelocity.y,
-				0);
+			eulerAngles.y = _limitRotationAngleY;
 		}
-		else if (_carTransform.eulerAngles.y > HalfCircle &&
-			_carTransform.eulerAngles.y < FullCircle - _limitRotationAngleY)
+		else if (rightLimitRotate)
 		{
-			_carTransform.eulerAngles = new Vector3(
-				_carTransform.eulerAngles.x,
-				FullCircle - _limitRotationAngleY,
-				_carTransform.eulerAngles.z);
+			eulerAngles.y = FullCircle - _limitRotationAngleY;
+		}*/
 
-			_carRigidbody.angularVelocity = new Vector3(
-				_carRigidbody.angularVelocity.x,
-				_carRigidbody.angularVelocity.y,
-				0);
-		}
-
-		if (_carTransform.eulerAngles.y >= -1 && _carTransform.eulerAngles.y <= 1)
-        {
-			_carRigidbody.angularVelocity = new Vector3(
-				_carRigidbody.angularVelocity.x,
-				_carRigidbody.angularVelocity.y,
-				0);
-		}
-	}	
-
+		_carTransform.eulerAngles = eulerAngles;
+	}
 	private void AccelerateAuto()
 	{
 		if (!_isActive)
