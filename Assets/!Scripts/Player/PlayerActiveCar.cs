@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UniRx;
 using Unity.VisualScripting;
+using Unity.VisualScripting.ReorderableList;
 
 public class PlayerActiveCar : MonoBehaviour
 {
@@ -118,7 +119,7 @@ public class PlayerActiveCar : MonoBehaviour
 	
 	private void FixedUpdate()
 	{
-		RotateCar();
+		
 		CheckConditions();
 
 		if (!_isActive)
@@ -193,31 +194,15 @@ public class PlayerActiveCar : MonoBehaviour
 		
 		frontLeftW.steerAngle = _steeringAngle;
 		frontRightW.steerAngle = _steeringAngle;
+		
+		RotateCar(_carTransform.rotation);
 	}
 
-	private void RotateCar()
+	private void RotateCar(Quaternion rotation)
 	{
-		
-		var eulerAngles = _carTransform.eulerAngles;
-		Debug.Log(Mathf.Acos(Mathf.Cos(eulerAngles.y)));
-		eulerAngles.y = Mathf.Acos(Mathf.Clamp(Mathf.Cos(eulerAngles.y), -Mathf.Cos(_limitRotationAngleY), Mathf.Cos(_limitRotationAngleY)));
-		/*var leftLimitRotate =
-			Mathf.Ceil(eulerAngles.y) >= _limitRotationAngleY && Mathf.Ceil(eulerAngles.y) <= HalfCircle;
-		
-		var rightLimitRotate = Mathf.Ceil(eulerAngles.y) >= HalfCircle &&
-		                        Mathf.Ceil(eulerAngles.y) <= FullCircle - _limitRotationAngleY;
-		
-		if (leftLimitRotate)
-		{
-			eulerAngles.y = _limitRotationAngleY;
-		}
-		else if (rightLimitRotate)
-		{
-			eulerAngles.y = FullCircle - _limitRotationAngleY;
-		}*/
-
-		_carTransform.eulerAngles = eulerAngles;
+		rotation.y = Mathf.Clamp(rotation.y, -Mathf.Cos(_limitRotationAngleY), Mathf.Cos(_limitRotationAngleY));
 	}
+	
 	private void AccelerateAuto()
 	{
 		if (!_isActive)
@@ -405,5 +390,5 @@ public class PlayerActiveCar : MonoBehaviour
 				_currentNitroLevel = _nitroCapacity;
             }
         }
-    }	
+    }
 }
