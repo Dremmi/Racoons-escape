@@ -54,7 +54,6 @@ public class Game : MonoBehaviour
 
     private void RestartGame()
     {
-        Debug.Log("Restart");
         _blockSpawner.ReloadBlocks();
     }
 }

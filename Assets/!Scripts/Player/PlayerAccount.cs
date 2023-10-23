@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using Unity.VisualScripting;
 
 public readonly struct OnShopCarViewSwitchMessage
 {
@@ -200,6 +201,7 @@ public class PlayerAccount : MonoBehaviour
     {
         _activeCar = Instantiate(carPrefab, _playerAccountConfig.PACSpawnPosition, transform.rotation);
         _activeCar.Launch(_game);
+        _activeCar.AddComponent<TileObserver>();
         _money.SetActiveCar(_activeCar);
 
         _camera.Launch(_activeCar.transform, _activeCar.GetComponent<PlayerCarShopView>().GetCarModelID());

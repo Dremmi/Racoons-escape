@@ -455,6 +455,51 @@ Transform:
   m_Father: {fileID: 7513171885059554901}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5778798341069439787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2321696347621674413}
+  - component: {fileID: 4606357781049236466}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2321696347621674413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778798341069439787}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8218325642773468019}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4606357781049236466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778798341069439787}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 0.1, z: 200}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5826337779851734410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1050,7 @@ Transform:
   - {fileID: 4737312538431735914}
   - {fileID: 5868603488907182789}
   - {fileID: 7513171885059554901}
+  - {fileID: 2321696347621674413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1016,11 +1062,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8218325642773468018}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 0.1, z: 200}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 200, y: 10, z: 200}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &4742352018725668564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,17 +1140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d9be71d2934de3a5f04e62668a80e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCars: 1
+  minSpawnCars: 8
   maxSpawnCars: 16
   waypoints:
-  - point1: {fileID: 3984736003132016595}
-    point2: {fileID: 1546796912753427353}
-  - point1: {fileID: 9037208016175273710}
-    point2: {fileID: 703190516005764262}
-  - point1: {fileID: 5279309319634810874}
-    point2: {fileID: 5916810620714089024}
-  - point1: {fileID: 2083475645218965583}
-    point2: {fileID: 3938384415250658988}
+  - Point1: {fileID: 3984736003132016595}
+    Point2: {fileID: 1546796912753427353}
+  - Point1: {fileID: 9037208016175273710}
+    Point2: {fileID: 703190516005764262}
+  - Point1: {fileID: 5279309319634810874}
+    Point2: {fileID: 5916810620714089024}
+  - Point1: {fileID: 2083475645218965583}
+    Point2: {fileID: 3938384415250658988}
   roadSpawns: 12
 --- !u!1 &9038207226423264242
 GameObject:

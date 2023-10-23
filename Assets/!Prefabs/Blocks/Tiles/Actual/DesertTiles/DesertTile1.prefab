@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4001909476471390647}
   - {fileID: 8324033537773729188}
   - {fileID: 1452883496034948091}
+  - {fileID: 966972981856529796}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,11 +47,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533951117993019420}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 200, y: 0.1, z: 200}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 200, y: 10, z: 200}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!114 &-3228108307972865063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,11 +79,56 @@ MonoBehaviour:
   minSpawnCars: 1
   maxSpawnCars: 16
   waypoints:
-  - point1: {fileID: 2956378146346435445}
-    point2: {fileID: 8931763247822095575}
-  - point1: {fileID: 2787415205871705261}
-    point2: {fileID: 1950465127057386491}
+  - Point1: {fileID: 2956378146346435445}
+    Point2: {fileID: 8931763247822095575}
+  - Point1: {fileID: 2787415205871705261}
+    Point2: {fileID: 1950465127057386491}
   roadSpawns: 16
+--- !u!1 &4022610606356846169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966972981856529796}
+  - component: {fileID: 7849969576812678884}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966972981856529796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022610606356846169}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2533951117993019421}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7849969576812678884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022610606356846169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 0.1, z: 200}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7706864121905546964
 GameObject:
   m_ObjectHideFlags: 0

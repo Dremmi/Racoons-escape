@@ -8,31 +8,13 @@ namespace Traffic
 {
     public class TrafficCarFactory
     {
-        private TrafficConfig _configs;
-        private eBlockType _blockType;
+        private readonly TrafficConfig _configs;
+        private readonly eBlockType _blockType;
 
         public TrafficCarFactory(TrafficConfig configs, eBlockType blockType)
         {
             _configs = configs;
             _blockType = blockType;
-        }
-
-        public TrafficCar Spawn(Vector3 position)
-        {
-            var config = GetConfig(_blockType);
-            var trafficCar = Object.Instantiate(config.Prefab, position, Quaternion.identity);
-            trafficCar.Launch(config.Speed);
-            
-            return trafficCar;
-        }
-        
-        public TrafficCar Spawn(Vector3 position, Quaternion rotation)
-        {
-            var config = GetConfig(_blockType);
-            var trafficCar = Object.Instantiate(config.Prefab, position, rotation);
-            trafficCar.Launch(config.Speed);
-            
-            return trafficCar;
         }
 
         public TrafficCar Spawn(Vector3 position, Quaternion rotation, Transform parent)
@@ -46,19 +28,14 @@ namespace Traffic
 
         private TrafficCarConfig GetConfig(eBlockType type)
         {
-            switch (type)
+            return type switch
             {
-                case eBlockType.City:
-                    return _configs.CityTraffic.RandomItem();
-                case eBlockType.Desert:
-                    return _configs.DesertTraffic.RandomItem();
-                case eBlockType.Highway:
-                    return _configs.HighwayTraffic.RandomItem();
-                case eBlockType.Forest:
-                    return _configs.ForestTraffic.RandomItem();
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
-            }
+                eBlockType.City => _configs.CityTraffic.RandomItem(),
+                eBlockType.Desert => _configs.DesertTraffic.RandomItem(),
+                eBlockType.Highway => _configs.HighwayTraffic.RandomItem(),
+                eBlockType.Forest => _configs.ForestTraffic.RandomItem(),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
         }
     }
 }

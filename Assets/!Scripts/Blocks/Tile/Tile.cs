@@ -6,19 +6,20 @@ public class Tile : MonoBehaviour
     private BuildingSpawnConfig _buildingSpawnConfig;
     private TrafficConfig _trafficConfig;
 
-    public void Launch(BuildingSpawnConfig buildingSpawnConfig, TrafficConfig trafficConfig, eBlockType blockType)
+    public void LaunchTraffic(TrafficConfig trafficConfig, eBlockType blockType)
     {
-        _buildingSpawnConfig = buildingSpawnConfig;
+        // Debug.Log($"Traffic spawned on tile : {gameObject.name}");
         _trafficConfig = trafficConfig;
-
-        _buildingSpawner = GetComponent<BuildingSpawner>();
         _trafficCarSpawner = GetComponent<TrafficCarSpawner>();
-
-
-        if (_buildingSpawner != null)
-            _buildingSpawner.Launch(_buildingSpawnConfig);
-        
         if (_trafficCarSpawner != null)
             _trafficCarSpawner.Launch(_trafficConfig, blockType);
+    }
+
+    public void LaunchBuildings(BuildingSpawnConfig buildingSpawnConfig)
+    {
+        _buildingSpawnConfig = buildingSpawnConfig;
+        _buildingSpawner = GetComponent<BuildingSpawner>();
+        if (_buildingSpawner != null)
+            _buildingSpawner.Launch(_buildingSpawnConfig);
     }
 }

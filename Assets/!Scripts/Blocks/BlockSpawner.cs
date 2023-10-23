@@ -50,24 +50,25 @@ public class BlockSpawner : MonoBehaviour
         if (_isFirstBlock)
         {
             block.GetFirstBlockParameters();
-            _isFirstBlock = false;
         }
         else
             block.GetBlockParameters(_nextBlockType);
 
         var tileSpawner = Instantiate(_blockSpawnConfig.TileSpawner, _pos, _rot, block.transform);
         tileSpawner.Launch(_blockSpawnConfig, _buildingSpawnConfig, _trafficConfig, block, ref _previousBlockType, ref _nextBlockType, ref _pos, _rot, _isFirstBlock);
-
+        _isFirstBlock = false;
+        
         _blocks.Add(block);
         _blockCount = _blocks.Count;
 
         _transitionTileColliders[transitionTileNumber] = tileSpawner.GetTransitionTileCollider();
         CheckTrigger(_transitionTileColliders[transitionTileNumber]);
+        
     }
     private void CheckTrigger(Collider trigger)
     {
         trigger.OnTriggerEnterAsObservable()
-            .Where(t => t.gameObject.CompareTag("Player"))
+            .Where(t => t.gameObject.GetComponent<PlayerActiveCar>())
             .Subscribe(other =>
             {
                 MessageBroker

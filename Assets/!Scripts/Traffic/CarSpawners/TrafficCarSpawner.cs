@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Extensions;
 using Traffic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class TrafficCarSpawner : MonoBehaviour
     [SerializeField] private  int maxSpawnCars = 16;
     [SerializeField] private Waypoints[] waypoints;
     [SerializeField] private int roadSpawns;
+    
     private TrafficCarFactory _trafficCarFactory;
     private List<Vector3> _spawnPositions;
 
@@ -18,8 +20,9 @@ public class TrafficCarSpawner : MonoBehaviour
     {
         _trafficCarFactory = new TrafficCarFactory(trafficConfig, blockType);
         _spawnPositions = GetSpawnPoints();
-        
-        for (int i = 1; i <= Random.Range(minSpawnCars, maxSpawnCars); i++)
+
+        var range = Random.Range(minSpawnCars, maxSpawnCars);
+        for (var i = 1; i <= range; i++)
         {
             Spawn();
         }
@@ -28,32 +31,16 @@ public class TrafficCarSpawner : MonoBehaviour
 
     private List<Vector3> GetSpawnPoints()
     {
-        List<Vector3> spawnPoints = new List<Vector3>();
-        List<TrafficLane> trafficLanes = new List<TrafficLane>();
-
-        for (int i = 0; i < waypoints.Length; i++)
-        {
-            trafficLanes.Add(new TrafficLane(waypoints[i]));
-        }
-
-        foreach (var lane in trafficLanes)
-        {
-            foreach (var point in lane.GetPoints(roadSpawns))
-            {
-                spawnPoints.Add(point);
-            }
-        }
-
-        return spawnPoints;
+        return waypoints.Select(t => new TrafficLane(t))
+            .SelectMany(lane => lane.GetPoints(roadSpawns))
+            .ToList();
     }
 
     private void Spawn()
     {
         var spawnPosition = _spawnPositions.RandomItem();
-        var trafficCar = _trafficCarFactory.Spawn(spawnPosition,
-            spawnPosition.x < 0f ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity,
-            transform);
-        
+        var rotation = spawnPosition.x < 0f ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity;
+        _trafficCarFactory.Spawn(spawnPosition, rotation, transform);
         _spawnPositions.Remove(spawnPosition);
     }
 
@@ -62,21 +49,24 @@ public class TrafficCarSpawner : MonoBehaviour
         if (waypoints == null)
             return;
         
-        List<TrafficLane> lanes = new List<TrafficLane>();
-        Gizmos.color = Color.red;
-        for (int i = 0; i < waypoints.Length; i++)
-        {
-            Gizmos.DrawLine(waypoints[i].point1.position, waypoints[i].point2.position);
-            lanes.Add(new TrafficLane(waypoints[i]));
-        }
-
+        var points = GetTrafficLanes()
+            .SelectMany(lane => lane.GetPoints(roadSpawns))
+            .ToList();
+        
         Gizmos.color = Color.white;
-        foreach (var lane in lanes)
+        foreach (var point in points)
         {
-            foreach (var point in lane.GetPoints(roadSpawns))
-            {
-                Gizmos.DrawSphere(point, 0.5f);
-            }
+            Gizmos.DrawSphere(point, 0.5f);
+        }
+    }
+
+    private IEnumerable<TrafficLane> GetTrafficLanes()
+    {
+        Gizmos.color = Color.red;
+        foreach (var waypoint in waypoints)
+        {
+            Gizmos.DrawLine(waypoint.Point1.position, waypoint.Point2.position);
+            yield return new TrafficLane(waypoint);
         }
     }
 }
