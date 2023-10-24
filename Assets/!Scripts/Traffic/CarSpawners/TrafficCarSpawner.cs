@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 
 public class TrafficCarSpawner : MonoBehaviour
 {
+    private const float deltaXSpawn = 0.4f;
     [SerializeField] private  int minSpawnCars = 4;
     [SerializeField] private  int maxSpawnCars = 16;
     [SerializeField] private Waypoints[] waypoints;
@@ -39,9 +40,11 @@ public class TrafficCarSpawner : MonoBehaviour
     private void Spawn()
     {
         var spawnPosition = _spawnPositions.RandomItem();
+        _spawnPositions.Remove(spawnPosition);
+        spawnPosition.x += Random.Range(-1, 1) * deltaXSpawn;
+
         var rotation = spawnPosition.x < 0f ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity;
         _trafficCarFactory.Spawn(spawnPosition, rotation, transform);
-        _spawnPositions.Remove(spawnPosition);
     }
 
     private void OnDrawGizmos()

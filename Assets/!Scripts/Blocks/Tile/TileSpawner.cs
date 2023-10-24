@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-// public readonly struct OnTransitionTileLaunched { }
+public readonly struct OnTransitionTileLaunched { }
 public class TileSpawner : MonoBehaviour
 {
     private BlockSpawnConfig _blockSpawnConfig;
@@ -34,7 +34,7 @@ public class TileSpawner : MonoBehaviour
         _trafficSpawnConfig = trafficSpawnConfig;
         
         CreateTiles(block, ref previousBlockType, ref nextBlockType, ref pos, rot);
-        Debug.Log(isFirstBlock);
+        
         if (isFirstBlock)
         {
             for (int i = 1; i <= _maxTileLaunch; i++)
@@ -42,18 +42,16 @@ public class TileSpawner : MonoBehaviour
         }
         else
         {
-            // MessageBroker
-            //     .Default
-            //     .Receive<OnTransitionTileLaunched>()
-            //     .Subscribe(message =>
-            //     {
-            //         for (int i = 1; i <= _maxTileLaunch; i++)
-            //             LaunchFirstTiles(i);
-            //     });
+            MessageBroker
+                .Default
+                .Receive<OnTransitionTileLaunched>()
+                .Subscribe(message =>
+                {
+                    for (int i = 0; i <= _maxTileLaunch; i++)
+                        LaunchFirstTiles(i);
+                });
         }
-            
-
-
+        
         MessageBroker
             .Default
             .Receive<OnTileChanged>()
@@ -133,20 +131,20 @@ public class TileSpawner : MonoBehaviour
             return;
         
         var index = _tiles.IndexOf(tile) + _maxTileLaunch;
-        // if (index == _tiles.Count)
-        // {
-        //     MessageBroker
-        //         .Default
-        //         .Publish(new OnTransitionTileLaunched());
-        //     return;
-        // }
+        
 
         if (index > _tiles.Count - 1)
             return;
         
         if(_availableTiles.Contains(_tiles[index]))
                 return;
-        
+        if (_tiles[index] == _transitionTile)
+        {
+            MessageBroker
+                .Default
+                .Publish(new OnTransitionTileLaunched());
+            return;
+        }
         _tiles[index].LaunchTraffic(_trafficSpawnConfig, _nextBlockType);
         _availableTiles.Add(_tiles[index]);
        
